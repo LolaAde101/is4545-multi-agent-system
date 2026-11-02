@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #FAF6F0;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #F4ECE1;
+    --bg-surface-muted: #EFE7DB;
+    --border-color: #DFD0BE;
+    --border-highlight: #C4975C;
+    --text-primary: #271A12;
+    --text-secondary: #654F3F;
+    --text-muted: #8F7663;
+    --accent-bronze: #8E4F1B;
+    --accent-caramel: #B87333;
+    --accent-tan: #D4B483;
+    --accent-cream: #FFFDF9;
+    --glow-color: rgba(184, 115, 51, 0.35);
+  }
+
+  .dark {
+    --bg-main: #140E0B;
+    --bg-surface: #1E1612;
+    --bg-surface-elevated: #281D17;
+    --bg-surface-muted: #33261F;
+    --border-color: #3F2E23;
+    --border-highlight: #C48243;
+    --text-primary: #FAF4ED;
+    --text-secondary: #D4C3B3;
+    --text-muted: #9E8978;
+    --accent-bronze: #D9883E;
+    --accent-caramel: #F2A65A;
+    --accent-tan: #C9A77C;
+    --accent-cream: #FAF4ED;
+    --glow-color: rgba(242, 166, 90, 0.45);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  }
+}
+
+/* Dynamic data flow arrow animations */
+@keyframes dashStream {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes reverseDashStream {
+  to {
+    stroke-dashoffset: 40;
+  }
+}
+
+@keyframes particlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 6px var(--accent-caramel));
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px var(--accent-caramel));
+  }
+}
+
+@keyframes nodeActiveGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(184, 115, 51, 0.4), 0 0 30px rgba(184, 115, 51, 0.2);
+    border-color: #B87333;
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(242, 166, 90, 0.8), 0 0 45px rgba(242, 166, 90, 0.4);
+    border-color: #F2A65A;
+  }
+}
+
+.animate-dash-flow {
+  animation: dashStream 1s linear infinite;
+}
+
+.animate-dash-flow-fast {
+  animation: dashStream 0.6s linear infinite;
+}
+
+.animate-dash-reverse {
+  animation: reverseDashStream 1.2s linear infinite;
+}
+
+.animate-node-glow {
+  animation: nodeActiveGlow 2s ease-in-out infinite;
+}
+
+/* Custom scrollbars in warm palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface-elevated);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-highlight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-caramel);
+}
